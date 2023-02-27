@@ -1,0 +1,5 @@
+
+# LOCAL
+GET http://localhost:3000/getBooksCategories
+
+content-type: application/json

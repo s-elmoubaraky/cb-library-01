@@ -1,0 +1,65 @@
+openapi: 3.0.0
+info:
+  title: Library API
+  description: API for managing library data
+  version: 1.0.0
+servers:
+  - url: http://localhost:3000
+paths:
+  /getBooks:
+    get:
+      summary: Get books
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: string
+      operationId: getBooks
+  /getBooksCategories:
+    get:
+      summary: Get book categories
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: string
+      operationId: getBooksCategories
+  /getByTitleOrCategory:
+    get:
+      summary: Get books by title or/and category
+      parameters:
+        - in: query
+          name: title
+          schema:
+            type: string
+          description: Book title to search for
+        - in: query
+          name: category
+          schema:
+            type: string
+          description: Book category to search for
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    Author:
+                      type: string
+                    Category:
+                      type: string
+                    Title:
+                      type: string
+      operationId: getByTitleOrCategory
